@@ -1,68 +1,101 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Reset default browser styles */
 body {
-  margin: 0;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Disable horizontal scrolling */
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+    pointer-events: none; 
+    background-image: url('../src/assets/pattern-randomized.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* App container */
+  .app-container {
+    position: relative;
+    overflow-y: auto; 
+    height: 100vh; 
+    background-image: url('./assets/pattern-randomized.svg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+
+
+/* Full-page container */
+.slider-container {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-around; /* Space divs evenly */
+  height: 100vh; /* Full height of the screen */ 
+  overflow: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Rotated Div */
+.rotated-div {
+  position: relative;
+  width: 210px; /* Fixed width for each div */
+  height: 90vh; /* 70% of the viewport height */
+
+  overflow: hidden; /* Hide overflowing images */
+  transform: rotate(10deg); /* Rotate each div */
+  border: 2px solid #333; /* Optional: border for visibility */
+  background-color: #222; /* Slightly different background for contrast */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Image Slider */
+.image-slider {
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Slider Image */
+.slider-image {
+  width: 100%; /* Fill the div horizontally */
+  margin-bottom: 10px; /* Space between images */
+}
+
+/* Animation for odd-numbered divs (images go up) */
+.slide-up {
+  animation: slide-up 20s linear infinite;
+}
+
+/* Animation for even-numbered divs (images go down) */
+.slide-down {
+  animation: slide-down 20s linear infinite;
+}
+
+/* Keyframes for sliding UP */
+@keyframes slide-up {
+  0% {
+    transform: translateY(0); /* Start position */
   }
-  a:hover {
-    color: #747bff;
+  100% {
+    transform: translateY(-10%); /* Move up by 100% of the slider */
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* Keyframes for sliding DOWN */
+@keyframes slide-down {
+  0% {
+    transform: translateY(-10%); /* Start from bottom */
+  }
+  100% {
+    transform: translateY(0); /* Move down to original position */
   }
 }
