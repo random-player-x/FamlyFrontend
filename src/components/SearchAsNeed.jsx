@@ -8,7 +8,7 @@ const SearchAsNeed = () => {
     return (
         <div className='mt-[10%]'>
         <div className="h-auto flex bg-white/80 justify-center">
-            <div className="flex h-[80vh] rounded-xl bg-orange-50 justify-center items-center w-[50%] font-bold">
+            <div className="flex h-[80vh] rounded-full bg-orange-50 justify-center items-center w-[50%] font-bold">
                 <div className=' p-5 h-full flex flex-col justify-center'>
                     <img src={mobile1} className='' alt="" />
                 </div>
@@ -44,7 +44,7 @@ const KnowMoreFamily = ()=> {
                 Get informed about the the members of the family you will be spending your life with
                 </span>
             </div>
-            <div className="flex h-[80vh] bg-orange-50 rounded-xl justify-center items-center w-[50%] font-bold">
+            <div className="flex h-[80vh] bg-orange-50 rounded-full justify-center items-center w-[50%] font-bold">
                 <div className=' p-5 h-full flex flex-col justify-center'>
                     <img src={mobile3} className='' alt="" />
                 </div>
@@ -62,7 +62,7 @@ const AiDriven = ()=> {
     return (
         <div className="h-auto flex bg-white/80 justify-center">
 
-            <div className="flex h-[80vh] rounded-xl bg-orange-50 justify-center items-center w-[50%] font-bold">
+            <div className="flex h-[80vh] rounded-full bg-orange-50 justify-center items-center w-[50%] font-bold">
                 <div className=' p-5 h-full flex flex-col justify-center'>
                     <img src={mobile3} className='' alt="" />
                 </div>
