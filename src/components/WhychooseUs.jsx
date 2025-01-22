@@ -11,7 +11,7 @@ export const WeDifferent = () => {
                 <div className="text-3xl flex justify-center bg--400 lg:text-6xl font-light ">
                     Why Choose Us ?
                 </div>
-                <div className="text-xl flex justify-center gap-[10%] mt-10">
+                <div className="text-xl block lg:flex  justify-center gap-[10%] mt-10">
                 <div className="w-[20%] bg--400 flex flex-col items-center">
                         <div className="flex justify-center m-5"><img src={wcu3} alt="" /></div>
                         <span className="font-bold text-xl">100% Personalised profile</span>
