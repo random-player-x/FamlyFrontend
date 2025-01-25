@@ -5,6 +5,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TnC from './pages/TnC';
 import FraudsAlerts from './pages/FraudsAlerts';
 import ContactForm from './pages/ContactUs';
+import SignupPage from './pages/SignUp';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/tnc" element={<TnC />} />
       <Route path="/fraudsalerts" element={<FraudsAlerts />} />
       <Route path="/contactus" element={<ContactForm />} />
+      <Route path="/signup" element={<SignupPage />} />
       </Routes>
     </Router>
   );

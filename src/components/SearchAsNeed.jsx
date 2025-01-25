@@ -8,7 +8,7 @@ const SearchAsNeed = () => {
     return (
         <div className='mt-[10%]'>
             <div className="h-auto flex bg-white/80 justify-center">
-                <div className="flex h-[80vh] rounded-full bg-orange-50 justify-center items-center w-[50%] font-bold">
+                <div className="flex h-[80vh]   justify-center items-center w-[50%] font-bold">
                     <img src={mobile1} alt="img" className='md:h-[500px] h-[250px]' />
 
                 </div>
@@ -40,14 +40,14 @@ const KnowMoreFamily = () => {
                     Get informed about the the members of the family you will be spending your life with
                 </span>
             </div>
-            <div className="flex h-[80vh] bg-orange-50 rounded-full justify-center items-center w-[50%] font-bold">
-                <div className="flex h-[80vh] rounded-full bg-orange-50 justify-center items-center w-[50%] font-bold">
-                    <img src={mobile2} alt="img" className='md:h-[500px] h-[250px]' />
+            <div className="flex h-[80vh]   justify-center items-center w-[50%] font-bold">
+                <div className="flex h-[80vh]   justify-center items-center w-[100%] font-bold">
+                    <img src={mobile2} alt="img" className='md:h-[500px] w-auto h-[250px]' />
 
                 </div>
-                <div className=' p-5 h-full flex flex-col justify-end pb-10'>
+                {/* <div className=' p-5 h-full flex flex-col justify-end pb-10'>
                     <img src={mobile4} alt="" />
-                </div>
+                </div> */}
             </div>
 
         </div>
@@ -59,9 +59,8 @@ const AiDriven = () => {
     return (
         <div className="h-auto flex bg-white/80 justify-center">
 
-            <div className="flex h-[80vh] rounded-full bg-orange-50 justify-center items-center w-[50%] font-bold">
+            <div className="flex h-[80vh]   justify-center items-center w-[50%] font-bold">
                 <img src={mobile3} alt="img" className='md:h-[500px] h-[250px]' />
-
             </div>
             <div className="w-[40%] flex flex-col justify-center gap-4 p-10">
                 <span className="text-4xl font-bold">

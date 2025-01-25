@@ -3,6 +3,7 @@ import '../index.css';
 import test1 from '../images/test1.jpeg'
 import test2 from '../images/test2.jpeg'
 import test3 from '../images/test3.jpeg'
+import { Link } from 'react-router-dom';
 
 const images = [test1, test2, test3]
 
@@ -57,11 +58,11 @@ export const MainBox = () => {
                     Description (optional)
                 </div>
                 <div className="flex">
-                    <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-base font-medium text-gray-900 rounded-full group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200">
+                    <Link to='/signup' className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-base font-medium text-gray-900 rounded-full group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200">
                         <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-full group-hover:bg-opacity-0">
                             Make Account
                         </span>
-                    </button>
+                    </Link>
                 </div>
             </div>
 
