@@ -4,7 +4,7 @@ import test1 from '../images/test1.jpeg'
 import test2 from '../images/test2.jpeg'
 import test3 from '../images/test3.jpeg'
 import { Link } from 'react-router-dom';
-import mainvideo from '../../public/bgvideo.mp4'
+import mainvideo from '../bgvideo.mp4'
 const images = [test1, test2, test3]
 
 // const RotatedImageSlider = () => {

@@ -6,7 +6,7 @@ import Footer from '../components/Home/Footer';
 
 const ContactForm = () => {
   const navigate = useNavigate();
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,15 +17,29 @@ const ContactForm = () => {
     captcha: ''
   });
 
+  const [wordCount, setWordCount] = useState(0); // Track word count
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+
+    if (name === 'message') {
+      const words = value.trim().split(/\s+/).filter(Boolean); // Count valid words
+      if (words.length <= 300) {
+        setWordCount(words.length); // Update word count
+        setFormData({ ...formData, [name]: value }); // Update message
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (wordCount > 300) {
+      toast.error('Message exceeds the 300-word limit. Please shorten your message.');
+      return;
+    }
 
     try {
       const response = await axios.post('http://13.235.72.216/auth/contact-form', formData);
@@ -33,37 +47,32 @@ const ContactForm = () => {
       if (response.status === 201) {
         toast.success('Thanks for your response, we will contact you soon!');
 
-        // Delay navigation to ensure toast appears
         setTimeout(() => {
           navigate('/'); // Redirect to home or another page
         }, 1000);
       } else {
-        console.log('Response:', response.data);
-        
         toast.error('Something went wrong. Please try again.');
       }
     } catch (error) {
-      console.error('Error during form submission:', error);
       toast.error(error.response?.data?.message || 'Something went wrong.');
-    }
-    finally{
-        // Reset form after submission
-        setFormData({
-          name: '',
-          email: '',
-          mobile_number: '',
-          priority: 'M',
-          category: '',
-          message: '',
-          captcha: ''
-        });
+    } finally {
+      setFormData({
+        name: '',
+        email: '',
+        mobile_number: '',
+        priority: 'M',
+        category: '',
+        message: '',
+        captcha: ''
+      });
+      setWordCount(0); // Reset word count
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50/65 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <Toaster position='top-center'/>
+        <Toaster position="top-center" />
         <div className="bg-white shadow-lg rounded-lg px-8 py-10">
           <h1 className="text-2xl font-semibold text-gray-900 text-center mb-8">
             Please feel free to post your questions, comments, and suggestions. We are eager to assist you and serve you better.
@@ -116,7 +125,6 @@ const ContactForm = () => {
                   required
                 />
               </div>
-
               <div>
                 <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
                   Category
@@ -130,18 +138,16 @@ const ContactForm = () => {
                   required
                 >
                   <option value="">--Select--</option>
-                  <option value="general">General</option>
-                  <option value="technical">Technical</option>
-                  <option value="billing">Billing</option>
-                  <option value="other">Other</option>
+                  <option value="Bug in application">Bug in application</option>
+                  <option value="Complaint with regards to services">Complaint with regards to services</option>
+                  <option value="Improvement suggestion">Improvement suggestion</option>
+                  <option value="suggestion">Suggestion</option>
+                  <option value="Miscellaneous">Miscellaneous</option>
                 </select>
                 {!formData.category && (
-                  <p className="mt-1 text-sm text-red-500">
-                    Must select one of the categories
-                  </p>
+                  <p className="mt-1 text-sm text-red-500">Must select one of the categories</p>
                 )}
               </div>
-
               <div>
                 <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-2">
                   Priority
@@ -158,7 +164,6 @@ const ContactForm = () => {
                   <option value="H">High</option>
                 </select>
               </div>
-
               <div>
                 <label htmlFor="captcha" className="block text-sm font-medium text-gray-700 mb-2">
                   Enter the displayed characters
@@ -182,10 +187,9 @@ const ContactForm = () => {
                 </p>
               </div>
             </div>
-
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Suggestions / Feedback
+                Suggestions / Feedback (max 300 words)
               </label>
               <textarea
                 name="message"
@@ -196,8 +200,10 @@ const ContactForm = () => {
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 required
               />
+              <p className="text-sm text-gray-500 mt-1">
+                {wordCount} / 300 words
+              </p>
             </div>
-
             <div>
               <button
                 type="submit"
@@ -214,12 +220,12 @@ const ContactForm = () => {
 };
 
 const CONTACTUS = () => {
-  return(
+  return (
     <div>
-    <ContactForm/>
-    <Footer/>
+      <ContactForm />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default CONTACTUS;
