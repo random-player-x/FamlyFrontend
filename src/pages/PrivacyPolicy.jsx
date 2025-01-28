@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Home/Footer';
 
 const PrivacyPolicy = () => {
   return (
@@ -373,4 +374,14 @@ const PrivacyPolicy = () => {
   );
 };
 
-export default PrivacyPolicy;
+const PRIVACY = () => {
+  return(
+    <div>
+    <PrivacyPolicy/>
+    <Footer/>
+    </div>
+
+  )
+}
+
+export default PRIVACY;

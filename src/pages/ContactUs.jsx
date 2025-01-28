@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import Footer from '../components/Home/Footer';
 
 const ContactForm = () => {
   const navigate = useNavigate();
@@ -212,4 +213,13 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+const CONTACTUS = () => {
+  return(
+    <div>
+    <ContactForm/>
+    <Footer/>
+    </div>
+  )
+}
+
+export default CONTACTUS;

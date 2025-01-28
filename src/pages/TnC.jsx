@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Home/Footer';
 
 const TnC = () => {
   return (
@@ -363,4 +364,13 @@ const TnC = () => {
   );
 };
 
-export default TnC;
+const TNC = ()=>{
+    return(
+        <div>
+            <TnC/>
+            <Footer/>
+        </div>
+    )
+}
+
+export default TNC;

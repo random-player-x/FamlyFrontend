@@ -6,6 +6,7 @@ import TnC from './pages/TnC';
 import FraudsAlerts from './pages/FraudsAlerts';
 import ContactForm from './pages/ContactUs';
 import SignupPage from './pages/SignUp';
+import Footer from './components/Home/Footer';
 
 function App() {
   return (

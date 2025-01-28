@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/Home/Footer";
 
 const FraudAlertsPage = () => {
   return (
@@ -99,4 +100,13 @@ const FraudAlertsPage = () => {
   );
 };
 
-export default FraudAlertsPage;
+const FRAUDS = () => {
+  return(
+    <div>
+    <FraudAlertsPage/>
+    <Footer/>
+    </div>
+  )
+}
+
+export default FRAUDS;

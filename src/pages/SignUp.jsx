@@ -3,7 +3,7 @@ import datinglogo from '../assets/datinglogo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-
+import Footer from '../components/Home/Footer';
 const SignupPage = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [name, setName] = useState('');
@@ -175,4 +175,13 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+const SIGNUP = () => {
+  return (
+    <div className="app-container">
+      <SignupPage />
+      <Footer />
+    </div>
+  );
+}
+
+export default SIGNUP;
