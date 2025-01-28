@@ -24,9 +24,9 @@ const SignupPage = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-  
+
     try {
-      const response = await axios.post('http://13.235.72.216/auth/webUser-register', {
+      const response = await axios.post('/api/auth/webUser-register', {
         name: name,
         email: email,
         password: password,
@@ -54,7 +54,7 @@ const SignupPage = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post('http://13.235.72.216/auth/webUser-login', {
+      const response = await axios.post('/api/auth/webUser-login', {
         password: password,
         email_mobile: mobile,
       });
