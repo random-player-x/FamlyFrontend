@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 const ContactForm = () => {
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    priority: 'Medium',
+    mobile_number: '',
+    priority: 'M',
     category: '',
-    feedback: '',
+    message: '',
     captcha: ''
   });
 
@@ -18,18 +23,49 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+
+    try {
+      const response = await axios.post('http://13.235.72.216/auth/contact-form', formData);
+
+      if (response.status === 201) {
+        toast.success('Thanks for your response, we will contact you soon!');
+
+        // Delay navigation to ensure toast appears
+        setTimeout(() => {
+          navigate('/'); // Redirect to home or another page
+        }, 1000);
+      } else {
+        console.log('Response:', response.data);
+        
+        toast.error('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during form submission:', error);
+      toast.error(error.response?.data?.message || 'Something went wrong.');
+    }
+    finally{
+        // Reset form after submission
+        setFormData({
+          name: '',
+          email: '',
+          mobile_number: '',
+          priority: 'M',
+          category: '',
+          message: '',
+          captcha: ''
+        });
+    }
   };
 
   return (
     <div className="min-h-screen bg-gray-50/65 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
+        <Toaster position='top-center'/>
         <div className="bg-white shadow-lg rounded-lg px-8 py-10">
           <h1 className="text-2xl font-semibold text-gray-900 text-center mb-8">
-            Please feel free to post your questions, comments and suggestions. We are eager to assist you and serve you better.
+            Please feel free to post your questions, comments, and suggestions. We are eager to assist you and serve you better.
           </h1>
           
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -66,14 +102,14 @@ const ContactForm = () => {
                 </p>
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="mobile_number" className="block text-sm font-medium text-gray-700 mb-2">
                   Phone Number
                 </label>
                 <input
                   type="tel"
-                  name="phone"
-                  id="phone"
-                  value={formData.phone}
+                  name="mobile_number"
+                  id="mobile_number"
+                  value={formData.mobile_number}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                   required
@@ -116,9 +152,9 @@ const ContactForm = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 >
-                  <option value="Low">Low</option>
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
+                  <option value="L">Low</option>
+                  <option value="M">Medium</option>
+                  <option value="H">High</option>
                 </select>
               </div>
 
@@ -141,20 +177,20 @@ const ContactForm = () => {
                   </div>
                 </div>
                 <p className="mt-1 text-sm text-gray-500">
-                  Characters that should be entered is case-sensitive.
+                  Characters that should be entered are case-sensitive.
                 </p>
               </div>
             </div>
 
             <div>
-              <label htmlFor="feedback" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                 Suggestions / Feedback
               </label>
               <textarea
-                name="feedback"
-                id="feedback"
+                name="message"
+                id="message"
                 rows={4}
-                value={formData.feedback}
+                value={formData.message}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 required
