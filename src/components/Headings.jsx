@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../index.css';
 import test1 from '../images/test1.jpeg'
 import test2 from '../images/test2.jpeg'
@@ -47,6 +47,16 @@ const images = [test1, test2, test3]
 
 
 export const MainBox = () => {
+
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const storedUsername = window.sessionStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []); // Empty dependency array ensures this runs only once on mount
+
     return (
         <div className="relative w-[90%] mx-auto mt-[100px] rounded-[50px] lg:h-[80%] md:h-[50%] h-[30%]  border-4 border-orange-400 overflow-hidden">
             {/* Text content */}
@@ -60,11 +70,13 @@ export const MainBox = () => {
                     Begins Here ...
                 </div>
                 <div className="flex">
-                    <Link to='/signup' className="scale-75 lg:scale-100 relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-base font-medium text-gray-900 rounded-full group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200">
+                    {username ? ("") : (
+                      <Link to='/signup' className="scale-75 lg:scale-100 relative inline-flex items-center justify-center p-0.5 me-2 overflow-hidden text-base font-medium text-gray-900 rounded-full group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white focus:ring-4 focus:outline-none focus:ring-pink-200">
                         <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-full group-hover:bg-opacity-0">
                             Make Account
                         </span>
-                    </Link>
+                      </Link>
+                    )}
                 </div>
               </div>
             </div>

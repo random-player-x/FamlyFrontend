@@ -55,7 +55,7 @@ export const Header = () => {
         </div>
         <div className="flex">
           {username ? (
-            <div className='flex bg-orange-500 font-mono py-1 px-6 m-5 text-sm lg:text-lg rounded-full lg:m-5'>
+            <div className='flex bg-orange-500 font-semibold text-white font-mono py-1 px-6 m-5 text-sm lg:text-lg rounded-full lg:m-5'>
               {username}
             </div>
           ) : (
