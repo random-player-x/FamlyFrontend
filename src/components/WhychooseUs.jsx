@@ -3,8 +3,8 @@ import React from "react";
 import wcu1 from "../images/wcu1.png";
 import wcu2 from "../images/wcu2.png";
 import wcu3 from "../images/wcu3.png";
-export const WeDifferent = () => {
 
+export const WeDifferent = () => {
     return (
         <div className=" h-auto flex flex-col mt-[10%] bg-white/60 p-10">
 

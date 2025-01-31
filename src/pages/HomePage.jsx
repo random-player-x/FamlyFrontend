@@ -7,18 +7,17 @@ import SearchAsNeed from '../components/SearchAsNeed';
 import Footer  from '../components/Home/Footer';
 import  GooglePlay  from '../components/GooglePlay';
 import BottomDescription from '../components/BottomDescription';
+import WhyChooseUs from '../components/Home/WhyChooseUs';
 function HomePage() {
   return (
     <div className="app-container">
       <Header />
       <MainBox />
-      {/* <RotatedImageSlider /> */}
-      <WeDifferent />
+      {/* <WeDifferent /> */}
+      <WhyChooseUs />
       <SearchAsNeed />
       <GooglePlay />
       <BottomDescription />
-      {/* <Testimonials /> */}
-      {/* <Blog /> */}
       <Footer />
     </div>
   );

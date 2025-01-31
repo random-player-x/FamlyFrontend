@@ -5,13 +5,13 @@ import prvcy from '../../images/Home/privacy.svg'
 
 const WhyChooseUs = () => {
   return (
-    <div className='py-8 px-10 bg-red-400'>
+    <div className='py-8 px-10 mt-[5%] bg-white'>
 
-        <div className='my-4 text-black font-bold text-4xl text-center'>
+        <div className='my-4 text-gray-700 font-bold text-3xl lg:text-5xl text-center'>
             Why Choose Us
         </div>
 
-        <div className='w-full my-10 lg:flex flex flex-col md:flex-row justify-center items-center'>
+        <div className='w-full my-10 lg:flex flex flex-col md:flex-row justify-center items-center gap-20 lg:gap-1'>
             <Box img={people} title={"100% Personalised profile"} desc={"Discover profiles tailored to your location, interests, community and a variety of other filters."}/>
 
             <Box img={prvt} title={" 100% Verified profiles"} desc={"Get access to verified profiles only"}/>
