@@ -62,10 +62,10 @@ const SignupPage = () => {
   
       if (response.status === 200 || response.data.message === 'Login successful') {
         toast.success('Login successful!');
-
         const token = response.data.token;
         window.sessionStorage.setItem('token', token);
-
+        window.sessionStorage.setItem('username', response.data.name);
+        
         setTimeout(() => {
           navigate('/'); // Redirect to home or another page
         }, 1000);
