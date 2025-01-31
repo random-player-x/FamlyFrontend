@@ -1,4 +1,4 @@
-import {LottiePlayer3, LottiePlayer2, LottiePlayer1, LottiePlayer4} from "./LottieAnimations";
+
 import React from "react";
 import wcu1 from "../images/wcu1.png";
 import wcu2 from "../images/wcu2.png";
@@ -31,17 +31,6 @@ export const WeDifferent = () => {
                         <span className="text-sm text-center">Controll who can see your contact details.</span>
                     </div>
                 </div>
-                {/* <div className="hidden lg:flex scale-50 lg:scale-100">
-                    <div className="block lg:flex">
-                    <LottiePlayer1 />
-                    <LottiePlayer2 />
-                    </div>
-                    <div className="block lg:flex">
-                    <LottiePlayer3 />
-                    <LottiePlayer4 />
-                    </div>
-                   
-                </div> */}
         </div>
     );
 }

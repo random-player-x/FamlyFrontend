@@ -43,14 +43,9 @@ export const Header = () => {
           <div className="flex m text-[#F47C20] font-bold text-2xl lg:text-4xl mr-5 justify-center">
             famly.in
             </div>
-          <div className="m-4 hidden lg:block sm:hidden hover:text-orange-500 hover:underline cursor-pointer">Products</div>
-          <div className="m-4 hidden lg:block sm:hidden hover:text-orange-500 hover:underline cursor-pointer">Safety</div>
-          <div className="m-4 hidden lg:block sm:hidden hover:text-orange-500 hover:underline cursor-pointer">Learn</div>
-          <div className="m-4 hidden lg:block sm:hidden hover:text-orange-500 hover:underline cursor-pointer">Download</div>
-          <div className="m-4 hidden lg:block sm:hidden hover:text-orange-500 hover:underline cursor-pointer">Support</div>
         </div>
         <div className="flex">
-          <Link to='/signup' className="lg:flex py-1 hidden px-6 m-5 text-sm lg:text-lg rounded-full bg-orange-500 hover:bg-orange-600 text-white lg:m-5">
+          <Link to='/signup' className="flex py-1 px-6 m-5 text-sm lg:text-lg rounded-full bg-orange-500 hover:bg-orange-600 text-white lg:m-5">
             Register
           </Link>
         </div>

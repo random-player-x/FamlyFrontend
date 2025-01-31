@@ -380,7 +380,6 @@ const PRIVACY = () => {
     <PrivacyPolicy/>
     <Footer/>
     </div>
-
   )
 }
 

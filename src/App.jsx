@@ -6,7 +6,8 @@ import TnC from './pages/TnC';
 import FraudsAlerts from './pages/FraudsAlerts';
 import ContactForm from './pages/ContactUs';
 import SignupPage from './pages/SignUp';
-import Footer from './components/Home/Footer';
+// import Footer from './components/Home/Footer';
+import CookiesPolicy from './pages/CookiesPolicy';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/fraudsalerts" element={<FraudsAlerts />} />
       <Route path="/contactus" element={<ContactForm />} />
       <Route path="/signup" element={<SignupPage />} />
+      <Route path="/cookiespolicy" element={<CookiesPolicy />} />
       </Routes>
     </Router>
   );

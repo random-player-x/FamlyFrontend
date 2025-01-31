@@ -58,10 +58,7 @@ const Footer = () => {
                     <ul className="flex flex-col gap-2 text-lg text-center">
                         <li><a onClick={() => handleClick('/privacypolicy')} className="cursor-pointer hover:text-white">Privacy Policy</a></li>
                         <li><a onClick={() => handleClick('/tnc')} className="cursor-pointer hover:text-white">Terms and Conditions</a></li>
-                        <li><a 
-                        // onClick={() => handleClick('/cookies-policy')} 
-
-                        className="cursor-pointer hover:text-white">Cookies Policy</a></li>
+                        <li><a onClick={() => handleClick('/cookiespolicy')} className="cursor-pointer hover:text-white">Cookies Policy</a></li>
                         <li><a onClick={() => handleClick('/fraudsalerts')} className="cursor-pointer hover:text-white">Fraud Alert</a></li>
                     </ul>
                 </div>
