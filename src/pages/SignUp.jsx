@@ -35,6 +35,7 @@ const SignupPage = () => {
   
       if (response.status === 201 || response.data.message === 'User registered successfully') {
         toast.success('Signup successful!');
+        window.sessionStorage.setItem('username', name);
         console.log('Response:', response.data);
   
         // Delay navigation to ensure toast appears

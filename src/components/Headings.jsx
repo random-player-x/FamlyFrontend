@@ -48,15 +48,15 @@ const images = [test1, test2, test3]
 
 export const MainBox = () => {
     return (
-        <div className="relative w-[90%] mx-auto mt-[100px] rounded-[50px] lg:h-[80%] h-[30%]  border-4 border-orange-400 overflow-hidden">
+        <div className="relative w-[90%] mx-auto mt-[100px] rounded-[50px] lg:h-[80%] md:h-[50%] h-[30%]  border-4 border-orange-400 overflow-hidden">
             {/* Text content */}
             <div className="absolute z-10 bg-orange-400 flex flex-col justify-center items-center text-center w-full h-full text-white">
               <video src={mainvideo} className='video-bg h-screen w-[100vw]' autoPlay loop muted></video>
               <div className='flex flex-col items-center absolute'>
-              <div className="font-bold text-3xl lg:text-8xl lg:mb-3 mx-2">
+              <div className="font-bold text-3xl md:text-6xl lg:text-8xl lg:mb-3 mx-2">
                     Start Of Something New
                 </div>
-                <div className="text-lg lg:text-4xl lg:mb-5 mb-2">
+                <div className="text-lg md:text-2xl lg:text-4xl lg:mb-5 mb-2">
                     Begins Here ...
                 </div>
                 <div className="flex">

@@ -10,7 +10,7 @@ const MainPage = () => {
 
     // Function to check if the screen width is mobile-sized
     const checkIsMobile = () => {
-        setIsMobile(window.innerWidth <= 768); // 768px is a common breakpoint for mobile devices
+        setIsMobile(window.innerWidth <= 1280); // 768px is a common breakpoint for mobile devices
     };
 
     // Add event listener for window resize

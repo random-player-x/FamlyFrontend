@@ -6,6 +6,12 @@ import datinglogo from '../assets/datinglogo.png';
 export const Header = () => {
   const [showHeader, setShowHeader] = useState(true);
   const firstScreenRef = useRef(null);
+  const [username, setUsername] = useState('');
+
+  if(window.sessionStorage.getItem('username')){
+    setUsername(window.sessionStorage.getItem('username'));
+  }
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -45,9 +51,15 @@ export const Header = () => {
             </div>
         </div>
         <div className="flex">
+          {username ? (<div className='flex bg-orange-500 font-mono py-1 px-6 m-5 text-sm lg:text-lg rounded-full lg:m-5'>
+            {username}
+          </div>): (
+
           <Link to='/signup' className="flex py-1 px-6 m-5 text-sm lg:text-lg rounded-full bg-orange-500 hover:bg-orange-600 text-white lg:m-5">
-            Register
+          Register
           </Link>
+          )}
+
         </div>
       </div>
 
