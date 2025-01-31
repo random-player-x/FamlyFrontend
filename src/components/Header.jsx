@@ -2,15 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import datinglogo from '../assets/datinglogo.png';
 
-
 export const Header = () => {
   const [showHeader, setShowHeader] = useState(true);
   const firstScreenRef = useRef(null);
   const [username, setUsername] = useState('');
 
-  if(window.sessionStorage.getItem('username')){
-    setUsername(window.sessionStorage.getItem('username'));
-  }
+  // Use useEffect to set the username from session storage
+  useEffect(() => {
+    const storedUsername = window.sessionStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,21 +48,21 @@ export const Header = () => {
         <div className='absolute'>
         </div>
         <div className="flex items-center text-lg ">
-        <img src={datinglogo} alt="heart" className=" ml-5 w-[40px] lg:w-[60px] inline" />
+          <img src={datinglogo} alt="heart" className=" ml-5 w-[40px] lg:w-[60px] inline" />
           <div className="flex m text-[#F47C20] font-bold text-2xl lg:text-4xl mr-5 justify-center">
             famly.in
-            </div>
+          </div>
         </div>
         <div className="flex">
-          {username ? (<div className='flex bg-orange-500 font-mono py-1 px-6 m-5 text-sm lg:text-lg rounded-full lg:m-5'>
-            {username}
-          </div>): (
-
-          <Link to='/signup' className="flex py-1 px-6 m-5 text-sm lg:text-lg rounded-full bg-orange-500 hover:bg-orange-600 text-white lg:m-5">
-          Register
-          </Link>
+          {username ? (
+            <div className='flex bg-orange-500 font-mono py-1 px-6 m-5 text-sm lg:text-lg rounded-full lg:m-5'>
+              {username}
+            </div>
+          ) : (
+            <Link to='/signup' className="flex py-1 px-6 m-5 text-sm lg:text-lg rounded-full bg-orange-500 hover:bg-orange-600 text-white lg:m-5">
+              Register
+            </Link>
           )}
-
         </div>
       </div>
 
@@ -72,4 +75,3 @@ export const Header = () => {
 };
 
 export default Header;
-
