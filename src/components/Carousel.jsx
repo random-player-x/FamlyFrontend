@@ -5,11 +5,11 @@ import i3 from '../assets/Home_1.png';
 import i4 from '../assets/Home_2.png';
 import i5 from '../assets/Home_3.png';
 import i6 from '../assets/Home_4.png';
-import i7 from '../assets/create_1.png';
-import i8 from '../assets/create_2.png';
-import i9 from '../assets/create_3.png';
-import i10 from '../assets/class_1.png';
-import i11 from '../assets/class_2.png';
+import i7 from '../assets/Create_1.png';
+import i8 from '../assets/Create_2.png';
+import i9 from '../assets/Create_3.png';
+import i10 from '../assets/Class_1.png';
+import i11 from '../assets/Class_2.png';
 
 const ImageCarousel = () => {
   // Array of images
