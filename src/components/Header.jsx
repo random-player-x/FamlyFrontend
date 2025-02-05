@@ -56,7 +56,7 @@ export const Header = () => {
         <div className="flex">
           {username ? (
             <Link to = '/userinfo'>
-            <div className='flex bg-orange-500 font-semibold text-white font-mono py-1 px-6 m-5 text-sm lg:text-lg rounded-full lg:m-5'>
+            <div className='flex bg-orange-500 font-semibold text-white py-1 px-6 m-5 text-sm lg:text-lg rounded-full lg:m-5'>
               {username}
             </div>
             </Link>
