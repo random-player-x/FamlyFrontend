@@ -63,7 +63,7 @@ const SignupPage = () => {
       if (response.status === 200 || response.data.message === 'Login successful') {
         if(response.data.login_status == "Disabled"){
           toast.error('Login failed. Account is disabled.');
-          window.location.reload();
+          navigate('/signup');
           return;
         }
         toast.success('Login successful!');
