@@ -57,7 +57,7 @@ const SignupPage = () => {
     try {
       const response = await axios.post('/api/auth/login', {
         password: password,
-        email_mobile: mobile,
+        mobile_number: mobile,
       });
   
       if (response.status === 200 || response.data.message === 'Login successful') {
