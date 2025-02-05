@@ -8,6 +8,7 @@ import ContactForm from './pages/ContactUs';
 import SignupPage from './pages/SignUp';
 // import Footer from './components/Home/Footer';
 import CookiesPolicy from './pages/CookiesPolicy';
+import UserProfile from './pages/UserinfoPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/contactus" element={<ContactForm />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/cookiespolicy" element={<CookiesPolicy />} />
+      <Route path="/userinfo" element={<UserProfile />} />
       </Routes>
     </Router>
   );

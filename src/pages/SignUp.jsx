@@ -5,7 +5,7 @@ import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import Footer from '../components/Home/Footer';
 const SignupPage = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -55,7 +55,7 @@ const SignupPage = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post('/api/auth/webUser-login', {
+      const response = await axios.post('/api/auth/login', {
         password: password,
         email_mobile: mobile,
       });
@@ -64,7 +64,7 @@ const SignupPage = () => {
         toast.success('Login successful!');
         const token = response.data.token;
         window.sessionStorage.setItem('token', token);
-        window.sessionStorage.setItem('username', response.data.name);
+        // window.sessionStorage.setItem('userdata', response.data.user);
         
         setTimeout(() => {
           navigate('/'); // Redirect to home or another page
@@ -166,11 +166,11 @@ const SignupPage = () => {
           </button>
         </form>
 
-        <div className="text-center">
+        {/* <div className="text-center">
           <button onClick={toggleForm} className="text-orange-600 hover:underline mt-3">
             {isLogin ? 'Need an account? Sign Up' : 'Already have an account? Log In'}
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
