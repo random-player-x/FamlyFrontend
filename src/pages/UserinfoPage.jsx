@@ -48,6 +48,11 @@ const UserProfile = () => {
             mobile_number: userData.mobile_number
         })
       });
+      if(response.ok){
+        window.sessionStorage.removeItem('token');
+        window.sessionStorage.removeItem('username');
+        navigate('/');
+      }
 
       if (!response.ok) {
         throw new Error('Failed to disable account');
