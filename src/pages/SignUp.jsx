@@ -64,7 +64,7 @@ const SignupPage = () => {
         toast.success('Login successful!');
         const token = response.data.token;
         window.sessionStorage.setItem('token', token);
-        // window.sessionStorage.setItem('userdata', response.data.user);
+        window.sessionStorage.setItem('username', response.data.name);
         
         setTimeout(() => {
           navigate('/'); // Redirect to home or another page
