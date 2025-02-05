@@ -6,6 +6,10 @@ const UserProfile = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showDisableModal, setShowDisableModal] = useState(false);
+  const [password, setPassword] = useState('');
+  const [disableLoading, setDisableLoading] = useState(false);
+  const [disableError, setDisableError] = useState('');
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -26,6 +30,38 @@ const UserProfile = () => {
 
     fetchUserData();
   }, []);
+
+  const handleDisableAccount = async () => {
+    try {
+      setDisableLoading(true);
+      setDisableError('');
+      const token = window.sessionStorage.getItem('token');
+      
+      const response = await fetch('/api/auth/disable', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            password: password,
+            mobile_number: userData.mobile_number
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to disable account');
+      }
+
+      // Close modal and handle success (e.g., redirect to logout)
+      setShowDisableModal(false);
+      // You might want to add a redirect or logout function here
+    } catch (err) {
+      setDisableError('Failed to disable account. Please try again.');
+    } finally {
+      setDisableLoading(false);
+    }
+  };
 
   if (loading) return (
     <div className="flex items-center justify-center min-h-screen">
@@ -126,6 +162,53 @@ const UserProfile = () => {
             </span>
           )}
         </div>
+
+        {/* Disable Account Button */}
+        <div className="mt-8 text-center">
+          <button
+            onClick={() => setShowDisableModal(true)}
+            className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+          >
+            Disable Account
+          </button>
+        </div>
+
+        {/* Disable Account Modal */}
+        {showDisableModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+            <div className="bg-white rounded-xl p-6 max-w-md w-full">
+              <h2 className="text-xl font-bold mb-4">Disable Account</h2>
+              <p className="text-gray-600 mb-4">
+                Please enter your password to confirm account disabling. This action cannot be undone.
+              </p>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                className="w-full p-2 border rounded-lg mb-4"
+              />
+              {disableError && (
+                <p className="text-red-500 mb-4">{disableError}</p>
+              )}
+              <div className="flex justify-end gap-4">
+                <button
+                  onClick={() => setShowDisableModal(false)}
+                  className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleDisableAccount}
+                  disabled={disableLoading}
+                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors disabled:bg-red-400"
+                >
+                  {disableLoading ? 'Processing...' : 'Confirm Disable'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
